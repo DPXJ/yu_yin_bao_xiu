@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机井语音报修系统 - 移动端原型演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f6fa;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .prototype-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 左侧导航栏 */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 0;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ecf0f1;
+        }
+
+        .nav-section {
+            padding: 15px 0;
+        }
+
+        .nav-section-title {
+            padding: 10px 20px;
+            font-size: 12px;
+            color: #95a5a6;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 5px;
+        }
+
+        .nav-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-left-color: #3498db;
+        }
+
+        .nav-item.active {
+            background: rgba(52, 152, 219, 0.2);
+            border-left-color: #3498db;
+            color: #3498db;
+        }
+
+        .nav-icon {
+            width: 16px;
+            text-align: center;
+        }
+
+        /* 右侧手机展示区域 */
+        .phone-display {
+            flex: 1;
+            margin-left: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .phone-frame {
+            width: 400px;
+            height: 800px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4285f4 0%, #357ae8 100%);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .page {
+            display: none;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* 入口页面样式 */
+        .entry-page {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            height: calc(100% - 60px);
+        }
+
+        .repair-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .repair-btn {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .voice-btn {
+            background: linear-gradient(135deg, #4285f4 0%, #357ae8 100%);
+            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.3);
+        }
+
+        .voice-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(66, 133, 244, 0.4);
+        }
+
+        .manual-btn {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            color: #6c757d;
+            border: 2px solid #dee2e6;
+        }
+
+        .btn-icon {
+            font-size: 32px;
+        }
+
+        /* 语音识别页面样式 */
+        .voice-page {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .voice-visual {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .voice-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4285f4 0%, #357ae8 100%);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .voice-circle.recording {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .voice-waves {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+        }
+
+        .wave {
+            position: absolute;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: wave 2s linear infinite;
+        }
+
+        @keyframes wave {
+            0% { width: 0; height: 0; opacity: 1; }
+            100% { width: 300px; height: 300px; opacity: 0; }
+        }
+
+        .voice-text {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 80px;
+            border: 2px dashed #dee2e6;
+            color: #6c757d;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .voice-text.has-content {
+            background: #e8f4f8;
+            border-color: #4285f4;
+            color: #333;
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .ctrl-btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+
+        .stop-btn {
+            background: linear-gradient(135deg, #dc3545 0%, #fd7e14 100%);
+            color: white;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4285f4 0%, #357ae8 100%);
+            color: white;
+            padding: 15px 40px;
+        }
+
+        /* 处理页面样式 */
+        .processing-page {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .processing-visual {
+            margin: 40px 0;
+        }
+
+        .loading-circle {
+            width: 120px;
+            height: 120px;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #4285f4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .process-steps {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+
+        .step-icon.completed {
+            background: #28a745;
+        }
+
+        .step-icon.processing {
+            background: #4285f4;
+            animation: pulse 1.5s infinite;
+        }
+
+        .step-icon.pending {
+            background: #dee2e6;
+            color: #6c757d;
+        }
+
+        /* 拍照弹窗样式 */
+        .photo-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .photo-modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 30px 20px;
+            margin: 20px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .modal-icon {
+            font-size: 48px;
+            color: #4285f4;
+            margin-bottom: 20px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .modal-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .photo-btn-yes {
+            background: linear-gradient(135deg, #4285f4 0%, #357ae8 100%);
+            color: white;
+        }
+
+        .photo-btn-no {
+            background: #f8f9fa;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
+        }
+
+        /* 完成页面样式 */
+        .complete-page {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        .order-info {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="prototype-container">
+        <!-- 左侧导航栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-title">页面导航</div>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">语音报修流程</div>
+                <div class="nav-item active" onclick="showPageAndHighlight('entryPage', this)">
+                    <span class="nav-icon">🏠</span>
+                    <span>报修入口</span>
+                </div>
+                <div class="nav-item" onclick="showPageAndHighlight('voicePage', this)">
+                    <span class="nav-icon">🎤</span>
+                    <span>语音识别</span>
+                </div>
+                <div class="nav-item" onclick="showPageAndHighlight('processPage', this)">
+                    <span class="nav-icon">⚙️</span>
+                    <span>AI处理中</span>
+                </div>
+                <div class="nav-item" onclick="showPageAndHighlight('completePage', this)">
+                    <span class="nav-icon">✅</span>
+                    <span>完成报修</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">其他功能</div>
+                <div class="nav-item">
+                    <span class="nav-icon">📝</span>
+                    <span>手动填报</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">📋</span>
+                    <span>工单管理</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span>维修记录</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>数据统计</span>
+                </div>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-section-title">系统设置</div>
+                <div class="nav-item">
+                    <span class="nav-icon">👤</span>
+                    <span>用户管理</span>
+                </div>
+                <div class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>系统配置</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧手机展示区域 -->
+        <div class="phone-display">
+            <div class="phone-frame">
+                <div class="phone-screen">
+                    <div class="container">
+                        <div class="header">
+                            <span id="headerTitle">机井报修</span>
+                        </div>
+
+                        <!-- 入口页面 -->
+                        <div class="page active" id="entryPage">
+            <div class="entry-page">
+                <div class="repair-buttons">
+                    <button class="repair-btn voice-btn" onclick="startVoiceRepair()">
+                        <div class="btn-icon">🎤</div>
+                        <div>语音报修</div>
+                    </button>
+                    <button class="repair-btn manual-btn">
+                        <div class="btn-icon">✏️</div>
+                        <div>手动填报</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 语音识别页面 -->
+        <div class="page" id="voicePage">
+            <div class="voice-page">
+                <h3 style="margin-bottom: 20px; color: #333;">请描述故障情况</h3>
+                <p style="color: #6c757d; margin-bottom: 30px;">说出机井编号、故障类型等信息</p>
+                
+                <div class="voice-visual">
+                    <div class="voice-circle" id="voiceCircle">
+                        <span id="voiceIcon">🎤</span>
+                        <div class="voice-waves" id="voiceWaves"></div>
+                    </div>
+                </div>
+
+                <div class="voice-text" id="voiceText">
+                    点击开始录音，说出故障详情...
+                </div>
+
+                <div class="control-buttons">
+                    <button class="ctrl-btn start-btn" id="startBtn" onclick="startRecording()">开始录音</button>
+                    <button class="ctrl-btn stop-btn" id="stopBtn" onclick="stopRecording()" style="display: none;">停止录音</button>
+                </div>
+
+                <button class="ctrl-btn submit-btn" id="submitBtn" onclick="submitVoice()" style="display: none;">提交报修</button>
+            </div>
+        </div>
+
+        <!-- 处理页面 -->
+        <div class="page" id="processPage">
+            <div class="processing-page">
+                <h3 style="margin-bottom: 20px; color: #333;">正在处理您的报修信息</h3>
+                
+                <div class="processing-visual">
+                    <div class="loading-circle"></div>
+                </div>
+
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-icon completed">✓</div>
+                        <div>语音识别完成</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon processing" id="aiStep">🤖</div>
+                        <div>AI智能分析中...</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon pending" id="orderStep">📋</div>
+                        <div>生成维修工单</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon pending" id="dispatchStep">👨‍🔧</div>
+                        <div>派发给维修人员</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 完成页面 -->
+        <div class="page" id="completePage">
+            <div class="complete-page">
+                <div class="success-icon">✓</div>
+                <h2 style="color: #28a745; margin-bottom: 10px;">报修成功</h2>
+                <p style="color: #6c757d; margin-bottom: 30px;">工单已生成并派发给维修人员</p>
+
+                <div class="order-info">
+                    <div class="info-row">
+                        <span class="info-label">工单编号</span>
+                        <span class="info-value" id="orderNumber">WO202312150001</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">机井编号</span>
+                        <span class="info-value" id="wellNumber">01号机井</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">故障类型</span>
+                        <span class="info-value" id="faultType">设备损坏，不通电</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">紧急程度</span>
+                        <span class="info-value" id="urgency">高</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">预计完成</span>
+                        <span class="info-value" id="estimatedTime">2小时内</span>
+                    </div>
+                </div>
+
+                <button class="back-btn" onclick="resetToEntry()">返回首页</button>
+                                    </div>
+
+                        <!-- 拍照弹窗 -->
+                        <div class="photo-modal" id="photoModal">
+                            <div class="modal-content">
+                                <div class="modal-icon">📷</div>
+                                <h3 style="margin-bottom: 10px;">补充故障照片</h3>
+                                <p style="color: #6c757d; font-size: 14px;">拍摄故障现场照片有助于维修人员更快定位问题</p>
+                                <div class="modal-buttons">
+                                    <button class="modal-btn photo-btn-yes" onclick="takePhoto()">拍照</button>
+                                    <button class="modal-btn photo-btn-no" onclick="skipPhoto()">跳过</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+
+    <script>
+        let isRecording = false;
+        let recordingTimer;
+        let currentStep = 0;
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function updateHeader(title) {
+            document.getElementById('headerTitle').textContent = title;
+        }
+
+        function showPageAndHighlight(pageId, navElement) {
+            // 移除所有导航项的active状态
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // 添加当前导航项的active状态
+            navElement.classList.add('active');
+            
+            // 显示对应页面
+            showPage(pageId);
+            
+            // 更新标题
+            const titles = {
+                'entryPage': '机井报修',
+                'voicePage': '语音报修',
+                'processPage': '处理中',
+                'completePage': '报修完成'
+            };
+            updateHeader(titles[pageId] || '机井报修');
+        }
+
+        function startVoiceRepair() {
+            showPage('voicePage');
+            updateHeader('语音报修');
+            
+            // 同时更新导航状态
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-item')[1].classList.add('active');
+        }
+
+        function startRecording() {
+            isRecording = true;
+            document.getElementById('startBtn').style.display = 'none';
+            document.getElementById('stopBtn').style.display = 'inline-block';
+            document.getElementById('voiceCircle').classList.add('recording');
+            document.getElementById('voiceIcon').textContent = '🔴';
+            
+            // 添加音波动画
+            createWaves();
+            
+            // 模拟语音识别
+            setTimeout(() => {
+                document.getElementById('voiceText').textContent = '正在识别...';
+                document.getElementById('voiceText').classList.add('has-content');
+            }, 1000);
+
+            setTimeout(() => {
+                document.getElementById('voiceText').textContent = '01号机井有损坏，不通电，请尽快安排维修人员过来检查...';
+            }, 3000);
+        }
+
+        function stopRecording() {
+            isRecording = false;
+            document.getElementById('stopBtn').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'inline-block';
+            document.getElementById('voiceCircle').classList.remove('recording');
+            document.getElementById('voiceIcon').textContent = '🎤';
+            
+            // 清除音波
+            document.getElementById('voiceWaves').innerHTML = '';
+        }
+
+        function createWaves() {
+            const wavesContainer = document.getElementById('voiceWaves');
+            const wave = document.createElement('div');
+            wave.className = 'wave';
+            wavesContainer.appendChild(wave);
+
+            if (isRecording) {
+                setTimeout(createWaves, 500);
+            }
+        }
+
+        function submitVoice() {
+            showPage('processPage');
+            updateHeader('处理中');
+            
+            // 模拟处理过程
+            setTimeout(() => {
+                document.getElementById('aiStep').classList.add('completed');
+                document.getElementById('aiStep').classList.remove('processing');
+                document.getElementById('aiStep').textContent = '✓';
+                document.getElementById('orderStep').classList.add('processing');
+                document.getElementById('orderStep').classList.remove('pending');
+            }, 2000);
+
+            setTimeout(() => {
+                // 显示拍照弹窗
+                document.getElementById('photoModal').classList.add('show');
+            }, 3000);
+        }
+
+        function takePhoto() {
+            document.getElementById('photoModal').classList.remove('show');
+            
+            // 模拟拍照延迟
+            setTimeout(() => {
+                completeProcess();
+            }, 1000);
+        }
+
+        function skipPhoto() {
+            document.getElementById('photoModal').classList.remove('show');
+            completeProcess();
+        }
+
+        function completeProcess() {
+            document.getElementById('orderStep').classList.add('completed');
+            document.getElementById('orderStep').classList.remove('processing');
+            document.getElementById('orderStep').textContent = '✓';
+            document.getElementById('dispatchStep').classList.add('processing');
+            document.getElementById('dispatchStep').classList.remove('pending');
+
+            setTimeout(() => {
+                document.getElementById('dispatchStep').classList.add('completed');
+                document.getElementById('dispatchStep').classList.remove('processing');
+                document.getElementById('dispatchStep').textContent = '✓';
+                
+                setTimeout(() => {
+                    showPage('completePage');
+                    updateHeader('报修完成');
+                }, 1000);
+            }, 2000);
+        }
+
+        function resetToEntry() {
+            showPage('entryPage');
+            updateHeader('机井报修');
+            
+            // 重置所有状态
+            isRecording = false;
+            document.getElementById('startBtn').style.display = 'inline-block';
+            document.getElementById('stopBtn').style.display = 'none';
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('voiceCircle').classList.remove('recording');
+            document.getElementById('voiceIcon').textContent = '🎤';
+            document.getElementById('voiceText').textContent = '点击开始录音，说出故障详情...';
+            document.getElementById('voiceText').classList.remove('has-content');
+            document.getElementById('voiceWaves').innerHTML = '';
+            
+            // 重置处理步骤
+            document.getElementById('aiStep').className = 'step-icon processing';
+            document.getElementById('aiStep').textContent = '🤖';
+            document.getElementById('orderStep').className = 'step-icon pending';
+            document.getElementById('orderStep').textContent = '📋';
+            document.getElementById('dispatchStep').className = 'step-icon pending';
+            document.getElementById('dispatchStep').textContent = '👨‍🔧';
+        }
+
+        // 阻止页面滚动
+        document.addEventListener('touchmove', function(e) {
+            e.preventDefault();
+        }, { passive: false });
+    </script>
+</body>
+</html>
