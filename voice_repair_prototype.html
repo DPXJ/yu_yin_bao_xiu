@@ -33,6 +33,13 @@
             position: fixed;
             height: 100vh;
             overflow-y: auto;
+            /* 隐藏滚动条 */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 和 Edge */
+        }
+
+        .sidebar::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
 
         .sidebar-header {
@@ -301,6 +308,13 @@
             overflow-y: auto;
             padding-bottom: 10px;
             min-height: 150px;
+            /* 隐藏滚动条 */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 和 Edge */
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
 
         .message {
@@ -457,6 +471,215 @@
 
         .info-value.collected {
             color: #28a745;
+        }
+
+        /* 数据统计页面样式 */
+        .stats-page {
+            padding: 20px;
+            height: calc(100% - 60px);
+            overflow-y: auto;
+            background: #f5f6fa;
+            /* 隐藏滚动条 */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE 和 Edge */
+        }
+
+        .stats-page::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .stats-header {
+            margin-bottom: 20px;
+        }
+
+        .stats-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .stats-subtitle {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* 数据卡片样式 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .stat-card.primary {
+            background: linear-gradient(135deg, #4285f4 0%, #357ae8 100%);
+            color: white;
+        }
+
+        .stat-card.success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+
+        .stat-card.warning {
+            background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+            color: white;
+        }
+
+        .stat-card.danger {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+        }
+
+        .stat-card.info {
+            background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+            color: white;
+        }
+
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 4px 0;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            opacity: 0.9;
+            line-height: 1.2;
+        }
+
+        /* 组织统计样式 */
+        .org-stats {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .org-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .org-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .org-total {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .org-data {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+
+        .org-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 8px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-size: 12px;
+        }
+
+        .org-item-label {
+            color: #666;
+        }
+
+        .org-item-value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .org-item-value.urgent {
+            color: #dc3545;
+        }
+
+        .org-item-value.normal {
+            color: #28a745;
+        }
+
+        /* 时长统计样式 */
+        .duration-stats {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .duration-header {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+        }
+
+        .duration-bar {
+            margin-bottom: 10px;
+        }
+
+        .duration-bar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-size: 11px;
+        }
+
+        .duration-bar-label {
+            color: #666;
+        }
+
+        .duration-bar-value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .duration-bar-fill {
+            height: 6px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .duration-bar-progress {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .duration-bar-progress.fast {
+            background: linear-gradient(90deg, #28a745, #20c997);
+        }
+
+        .duration-bar-progress.normal {
+            background: linear-gradient(90deg, #ffc107, #fd7e14);
+        }
+
+        .duration-bar-progress.slow {
+            background: linear-gradient(90deg, #dc3545, #c82333);
         }
 
         /* 处理页面样式 */
@@ -1014,11 +1237,11 @@
 
             <div class="nav-section collapsed">
                 <div class="nav-section-title" onclick="toggleSection(this)">
-                    <span>📊 数据分析（本次不做）</span>
+                    <span>📊 数据分析（本次只做静态页面）</span>
                     <span class="nav-section-toggle">▼</span>
                 </div>
                 <div class="nav-section-content">
-                    <div class="nav-item">
+                    <div class="nav-item" onclick="showPageAndHighlight('statsPage', this)">
                         <span class="nav-icon">📈</span>
                         <span>数据统计</span>
                     </div>
@@ -1320,6 +1543,209 @@
                             </div>
                         </div>
 
+                        <!-- 数据统计页面 -->
+                        <div class="page" id="statsPage">
+                            <div class="stats-page">
+                                <div class="stats-header">
+                                    <div class="stats-title">机井管理数据统计</div>
+                                    <div class="stats-subtitle">更新时间：2024年12月15日 14:30</div>
+                                </div>
+
+                                <!-- 总体数据统计 -->
+                                <div class="stats-grid">
+                                    <div class="stat-card primary">
+                                        <div class="stat-value">2,048</div>
+                                        <div class="stat-label">机井总数</div>
+                                    </div>
+                                    <div class="stat-card success">
+                                        <div class="stat-value">1,967</div>
+                                        <div class="stat-label">正常机井数</div>
+                                    </div>
+                                    <div class="stat-card danger">
+                                        <div class="stat-value">81</div>
+                                        <div class="stat-label">故障机井总数</div>
+                                    </div>
+                                    <div class="stat-card warning">
+                                        <div class="stat-value">15</div>
+                                        <div class="stat-label">本月上报总数</div>
+                                    </div>
+                                    <div class="stat-card info">
+                                        <div class="stat-value">3</div>
+                                        <div class="stat-label">今日上报总数</div>
+                                    </div>
+                                    <div class="stat-card success">
+                                        <div class="stat-value">245</div>
+                                        <div class="stat-label">累计维修数</div>
+                                    </div>
+                                    <div class="stat-card warning">
+                                        <div class="stat-value">5</div>
+                                        <div class="stat-label">今日待维修数</div>
+                                    </div>
+                                    <div class="stat-card info">
+                                        <div class="stat-value">2</div>
+                                        <div class="stat-label">今日维修数</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-value">8</div>
+                                        <div class="stat-label">今日待巡检数</div>
+                                    </div>
+                                </div>
+
+                                <!-- 组织统计 -->
+                                <div class="org-stats">
+                                    <div class="org-header">
+                                        <div class="org-name">🏡 赵楼村</div>
+                                        <div class="org-total">管辖机井：520台</div>
+                                    </div>
+                                    <div class="org-data">
+                                        <div class="org-item">
+                                            <span class="org-item-label">故障数量</span>
+                                            <span class="org-item-value urgent">12台</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">正常运行</span>
+                                            <span class="org-item-value normal">508台</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">本月报修</span>
+                                            <span class="org-item-value">8次</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">平均维修时长</span>
+                                            <span class="org-item-value">2.5小时</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="org-stats">
+                                    <div class="org-header">
+                                        <div class="org-name">🏡 小张村</div>
+                                        <div class="org-total">管辖机井：680台</div>
+                                    </div>
+                                    <div class="org-data">
+                                        <div class="org-item">
+                                            <span class="org-item-label">故障数量</span>
+                                            <span class="org-item-value urgent">25台</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">正常运行</span>
+                                            <span class="org-item-value normal">655台</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">本月报修</span>
+                                            <span class="org-item-value">4次</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">平均维修时长</span>
+                                            <span class="org-item-value">3.2小时</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="org-stats">
+                                    <div class="org-header">
+                                        <div class="org-name">🏡 王庄村</div>
+                                        <div class="org-total">管辖机井：848台</div>
+                                    </div>
+                                    <div class="org-data">
+                                        <div class="org-item">
+                                            <span class="org-item-label">故障数量</span>
+                                            <span class="org-item-value urgent">44台</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">正常运行</span>
+                                            <span class="org-item-value normal">804台</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">本月报修</span>
+                                            <span class="org-item-value">3次</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">平均维修时长</span>
+                                            <span class="org-item-value">1.8小时</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 查看全部组织按钮 -->
+                                <div style="text-align: center; margin: 20px 0;">
+                                    <button style="
+                                        background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+                                        color: white;
+                                        border: none;
+                                        padding: 10px 20px;
+                                        border-radius: 20px;
+                                        font-size: 13px;
+                                        font-weight: 600;
+                                        cursor: pointer;
+                                        transition: all 0.3s ease;
+                                        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                                    " onclick="alert('查看全部组织功能（待开发）')">
+                                        📋 查看全部组织统计
+                                    </button>
+                                </div>
+
+                                <!-- 维修时长统计 -->
+                                <div class="duration-stats">
+                                    <div class="duration-header">⏱️ 维修响应时长分析</div>
+                                    
+                                    <div class="duration-bar">
+                                        <div class="duration-bar-header">
+                                            <span class="duration-bar-label">2小时内完成</span>
+                                            <span class="duration-bar-value">65%</span>
+                                        </div>
+                                        <div class="duration-bar-fill">
+                                            <div class="duration-bar-progress fast" style="width: 65%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="duration-bar">
+                                        <div class="duration-bar-header">
+                                            <span class="duration-bar-label">2-6小时完成</span>
+                                            <span class="duration-bar-value">25%</span>
+                                        </div>
+                                        <div class="duration-bar-fill">
+                                            <div class="duration-bar-progress normal" style="width: 25%;"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="duration-bar">
+                                        <div class="duration-bar-header">
+                                            <span class="duration-bar-label">超过6小时</span>
+                                            <span class="duration-bar-value">10%</span>
+                                        </div>
+                                        <div class="duration-bar-fill">
+                                            <div class="duration-bar-progress slow" style="width: 10%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 未维修统计 -->
+                                <div class="duration-stats">
+                                    <div class="duration-header">⚠️ 待处理工单统计</div>
+                                    
+                                    <div class="org-data">
+                                        <div class="org-item">
+                                            <span class="org-item-label">紧急工单</span>
+                                            <span class="org-item-value urgent">2个</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">普通工单</span>
+                                            <span class="org-item-value">3个</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">超时工单</span>
+                                            <span class="org-item-value urgent">1个</span>
+                                        </div>
+                                        <div class="org-item">
+                                            <span class="org-item-label">平均等待时长</span>
+                                            <span class="org-item-value">4.2小时</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- 定位权限弹窗 -->
                         <div class="location-modal" id="locationModal">
                             <div class="location-modal-content">
@@ -1406,7 +1832,8 @@
                 'confirmPage': '确认信息',
                 'photoPage': '上传照片',
                 'processPage': '处理中',
-                'completePage': '报修完成'
+                'completePage': '报修完成',
+                'statsPage': '数据统计'
             };
             updateHeader(titles[pageId] || '机井报修');
         }
