@@ -1151,6 +1151,414 @@
             margin-bottom: 5px;
             display: block;
         }
+
+        /* 新数据统计页面样式 */
+        .new-stats-page {
+            padding: 15px;
+            height: calc(100% - 60px);
+            overflow-y: auto;
+            background: #f5f6fa;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .new-stats-page::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 区域选择器 */
+        .region-selector {
+            background: white;
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .region-label {
+            font-size: 13px;
+            color: #666;
+            margin-right: 10px;
+        }
+
+        .region-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .region-icon {
+            color: #4285f4;
+            font-size: 16px;
+        }
+
+        /* 统计模块 */
+        .stats-module {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .module-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .module-icon {
+            font-size: 18px;
+        }
+
+        .drill-btn {
+            background: linear-gradient(135deg, #4285f4 0%, #357ae8 100%);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .drill-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .stat-item {
+            flex: 1;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 12px 10px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+
+        .stat-item.highlight {
+            background: linear-gradient(135deg, #4285f4 0%, #357ae8 100%);
+            color: white;
+            border: none;
+        }
+
+        .stat-item.warning {
+            background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);
+            color: white;
+            border: none;
+        }
+
+        .stat-item.success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            border: none;
+        }
+
+        .stat-item-value {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .stat-item-label {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        /* 数据下钻页面样式 */
+        .drill-down-page {
+            padding: 15px;
+            height: calc(100% - 60px);
+            overflow-y: auto;
+            background: #f5f6fa;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .drill-down-page::-webkit-scrollbar {
+            display: none;
+        }
+
+        .breadcrumb {
+            background: white;
+            border-radius: 10px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .breadcrumb-item {
+            cursor: pointer;
+            color: #4285f4;
+        }
+
+        .breadcrumb-separator {
+            color: #999;
+        }
+
+        .breadcrumb-current {
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* 层级卡片 */
+        .level-card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #4285f4;
+        }
+
+        .level-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateX(2px);
+        }
+
+        .level-card.expanded {
+            border-left-color: #28a745;
+        }
+
+        .card-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title-section {
+            flex: 1;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-subtitle {
+            font-size: 12px;
+            color: #666;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .card-subtitle span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .card-toggle {
+            font-size: 20px;
+            color: #4285f4;
+            transition: transform 0.3s ease;
+        }
+
+        .level-card.expanded .card-toggle {
+            transform: rotate(180deg);
+        }
+
+        .card-content {
+            display: none;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .level-card.expanded .card-content {
+            display: block;
+        }
+
+        /* 机井卡片（村级） */
+        .well-card {
+            background: white;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid #ffc107;
+        }
+
+        .well-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transform: translateX(2px);
+        }
+
+        .well-card-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .well-card-info {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* 机井详情页面 */
+        .well-detail-page {
+            padding: 15px;
+            height: calc(100% - 60px);
+            overflow-y: auto;
+            background: #f5f6fa;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .well-detail-page::-webkit-scrollbar {
+            display: none;
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-header {
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 2px solid #f0f0f0;
+            margin-bottom: 15px;
+        }
+
+        .detail-well-number {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4285f4;
+            margin-bottom: 8px;
+        }
+
+        .detail-well-region {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .detail-row {
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #f8f9fa;
+            font-size: 13px;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            width: 100px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            flex: 1;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .detail-value.highlight {
+            color: #4285f4;
+            font-size: 14px;
+        }
+
+        .detail-value.important {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 13px;
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-label {
+            color: #666;
+        }
+
+        .contact-value {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .back-drill-btn {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .back-drill-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -1244,6 +1652,10 @@
                     <div class="nav-item" onclick="showPageAndHighlight('statsPage', this)">
                         <span class="nav-icon">📈</span>
                         <span>数据统计</span>
+                    </div>
+                    <div class="nav-item" onclick="showPageAndHighlight('newStatsPage', this)">
+                        <span class="nav-icon">🔍</span>
+                        <span>新数据统计</span>
                     </div>
                     <div class="nav-sub-item">
                         <span class="nav-icon">📊</span>
@@ -1746,6 +2158,194 @@
                             </div>
                         </div>
 
+                        <!-- 新数据统计页面 -->
+                        <div class="page" id="newStatsPage">
+                            <div class="new-stats-page">
+                                <!-- 行政区域选择 -->
+                                <div class="region-selector">
+                                    <span class="region-label">当前区域：</span>
+                                    <div class="region-value">
+                                        <span>商丘市</span>
+                                        <span class="region-icon">📍</span>
+                                    </div>
+                                </div>
+
+                                <!-- 上报统计模块 -->
+                                <div class="stats-module">
+                                    <div class="module-header">
+                                        <div class="module-title">
+                                            <span class="module-icon">📝</span>
+                                            <span>上报统计</span>
+                                        </div>
+                                        <button class="drill-btn" onclick="drillDown('repair', 'county')">
+                                            <span>下钻查看</span>
+                                            <span>🔍</span>
+                                        </button>
+                                    </div>
+                                    <div class="stats-row">
+                                        <div class="stat-item highlight">
+                                            <div class="stat-item-value">152</div>
+                                            <div class="stat-item-label">本月报修总数</div>
+                                        </div>
+                                        <div class="stat-item warning">
+                                            <div class="stat-item-value">23</div>
+                                            <div class="stat-item-label">今日报修总数</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 巡检统计模块 -->
+                                <div class="stats-module">
+                                    <div class="module-header">
+                                        <div class="module-title">
+                                            <span class="module-icon">🔍</span>
+                                            <span>巡检统计</span>
+                                        </div>
+                                        <button class="drill-btn" onclick="drillDown('inspection', 'county')">
+                                            <span>下钻查看</span>
+                                            <span>🔍</span>
+                                        </button>
+                                    </div>
+                                    <div class="stats-row">
+                                        <div class="stat-item success">
+                                            <div class="stat-item-value">485</div>
+                                            <div class="stat-item-label">本月巡检总数</div>
+                                        </div>
+                                        <div class="stat-item highlight">
+                                            <div class="stat-item-value">45</div>
+                                            <div class="stat-item-label">今日待巡检数</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 维修统计模块 -->
+                                <div class="stats-module">
+                                    <div class="module-header">
+                                        <div class="module-title">
+                                            <span class="module-icon">🔧</span>
+                                            <span>维修统计</span>
+                                        </div>
+                                        <button class="drill-btn" onclick="drillDown('maintenance', 'county')">
+                                            <span>下钻查看</span>
+                                            <span>🔍</span>
+                                        </button>
+                                    </div>
+                                    <div class="stats-row">
+                                        <div class="stat-item success">
+                                            <div class="stat-item-value">128</div>
+                                            <div class="stat-item-label">本月维修总数</div>
+                                        </div>
+                                        <div class="stat-item warning">
+                                            <div class="stat-item-value">18</div>
+                                            <div class="stat-item-label">今日待维修数</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 数据下钻页面（县级/镇级/村级） -->
+                        <div class="page" id="drillDownPage">
+                            <div class="drill-down-page">
+                                <!-- 面包屑导航 -->
+                                <div class="breadcrumb" id="breadcrumb">
+                                    <span class="breadcrumb-item" onclick="backToNewStats()">商丘市</span>
+                                    <span class="breadcrumb-separator">></span>
+                                    <span class="breadcrumb-current" id="currentLevel">上报统计</span>
+                                </div>
+
+                                <!-- 动态内容区域 -->
+                                <div id="drillDownContent"></div>
+                            </div>
+                        </div>
+
+                        <!-- 机井列表页面（2级页面） -->
+                        <div class="page" id="wellListPage">
+                            <div class="drill-down-page">
+                                <!-- 面包屑导航 -->
+                                <div class="breadcrumb">
+                                    <span class="breadcrumb-item" onclick="backToNewStats()">商丘市</span>
+                                    <span class="breadcrumb-separator">></span>
+                                    <span class="breadcrumb-item" onclick="backToDrillDown()">宁陵县</span>
+                                    <span class="breadcrumb-separator">></span>
+                                    <span class="breadcrumb-item" onclick="backToDrillDown()">张桥镇</span>
+                                    <span class="breadcrumb-separator">></span>
+                                    <span class="breadcrumb-current">张桥村</span>
+                                </div>
+
+                                <!-- 机井卡片列表 -->
+                                <div id="wellListContent"></div>
+                            </div>
+                        </div>
+
+                        <!-- 机井详情页面（3级页面） -->
+                        <div class="page" id="wellDetailPage">
+                            <div class="well-detail-page">
+                                <!-- 面包屑导航 -->
+                                <div class="breadcrumb">
+                                    <span class="breadcrumb-item" onclick="backToNewStats()">商丘市</span>
+                                    <span class="breadcrumb-separator">></span>
+                                    <span class="breadcrumb-item" onclick="backToWellList()">张桥村</span>
+                                    <span class="breadcrumb-separator">></span>
+                                    <span class="breadcrumb-current">机井详情</span>
+                                </div>
+
+                                <!-- 机井基本信息 -->
+                                <div class="detail-card">
+                                    <div class="detail-header">
+                                        <div class="detail-well-number" id="detailWellNumber">ZQ0518</div>
+                                        <div class="detail-well-region" id="detailWellRegion">张桥镇 > 张桥村</div>
+                                    </div>
+
+                                    <div class="detail-row">
+                                        <span class="detail-label">报修人</span>
+                                        <span class="detail-value" id="detailReporter">张三</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">报修时间</span>
+                                        <span class="detail-value highlight" id="detailTime">2025年10月16日 15:29:07</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">故障类型</span>
+                                        <span class="detail-value important" id="detailFaultType">机井不出水</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">报修方式</span>
+                                        <span class="detail-value" id="detailMethod">AI语音报修</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">报修电话</span>
+                                        <span class="detail-value" id="detailPhone">183****0001</span>
+                                    </div>
+                                    <div class="detail-row">
+                                        <span class="detail-label">通话内容</span>
+                                        <span class="detail-value" id="detailContent" style="font-size: 12px; line-height: 1.5;">机井突然不出水了，检查了一下，电是通的，但是水泵好像没有声音，可能是水泵坏了。</span>
+                                    </div>
+                                </div>
+
+                                <!-- 联系人信息 -->
+                                <div class="detail-card">
+                                    <div style="font-weight: 600; margin-bottom: 12px; font-size: 14px;">📞 相关联系人</div>
+                                    <div class="contact-info">
+                                        <div class="contact-item">
+                                            <span class="contact-label">井长</span>
+                                            <span class="contact-value">李四 188****0001</span>
+                                        </div>
+                                        <div class="contact-item">
+                                            <span class="contact-label">管护员</span>
+                                            <span class="contact-value">王五 188****0002</span>
+                                        </div>
+                                        <div class="contact-item">
+                                            <span class="contact-label">维修员</span>
+                                            <span class="contact-value">王五 188****0002</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="back-drill-btn" onclick="backToWellList()">返回机井列表</button>
+                            </div>
+                        </div>
+
                         <!-- 定位权限弹窗 -->
                         <div class="location-modal" id="locationModal">
                             <div class="location-modal-content">
@@ -1833,9 +2433,309 @@
                 'photoPage': '上传照片',
                 'processPage': '处理中',
                 'completePage': '报修完成',
-                'statsPage': '数据统计'
+                'statsPage': '数据统计',
+                'newStatsPage': '新数据统计',
+                'drillDownPage': '数据下钻',
+                'wellListPage': '机井列表',
+                'wellDetailPage': '机井详情'
             };
             updateHeader(titles[pageId] || '机井报修');
+        }
+
+        // 数据下钻相关变量
+        let currentDrillType = ''; // repair, inspection, maintenance
+        let drillDownState = {
+            level: '', // county, town, village
+            county: '',
+            town: '',
+            village: ''
+        };
+
+        // 模拟数据
+        const mockData = {
+            repair: {
+                county: [
+                    { name: '宁陵县', villages: 15, wells: 152 },
+                    { name: '梁园区', villages: 12, wells: 89 },
+                    { name: '睢阳区', villages: 18, wells: 203 }
+                ],
+                town: {
+                    '宁陵县': [
+                        { name: '张桥镇', villages: 5, wells: 52 },
+                        { name: '刘楼乡', villages: 4, wells: 38 },
+                        { name: '华堡镇', villages: 6, wells: 62 }
+                    ]
+                },
+                village: {
+                    '张桥镇': [
+                        { name: '张桥村', wells: 18 },
+                        { name: '李楼村', wells: 12 },
+                        { name: '王庄村', wells: 22 }
+                    ]
+                },
+                wells: {
+                    '张桥村': [
+                        { number: 'ZQ0518', reporter: '张三', time: '2025年10月16日 15:29:07', fault: '机井不出水' },
+                        { number: 'ZQ0352', reporter: '李四', time: '2025年10月16日 14:15:23', fault: '水泵异响严重' },
+                        { number: 'ZQ0127', reporter: '王五', time: '2025年10月16日 10:08:45', fault: '电路故障无法启动' }
+                    ]
+                }
+            },
+            inspection: {
+                county: [
+                    { name: '宁陵县', villages: 12, wells: 142 },
+                    { name: '梁园区', villages: 10, wells: 95 },
+                    { name: '睢阳区', villages: 15, wells: 187 }
+                ],
+                town: {
+                    '宁陵县': [
+                        { name: '张桥镇', villages: 4, wells: 48 },
+                        { name: '刘楼乡', villages: 3, wells: 32 },
+                        { name: '华堡镇', villages: 5, wells: 62 }
+                    ]
+                },
+                village: {
+                    '张桥镇': [
+                        { name: '张桥村', wells: 15 },
+                        { name: '李楼村', wells: 10 },
+                        { name: '王庄村', wells: 23 }
+                    ]
+                },
+                wells: {
+                    '张桥村': [
+                        { number: 'ZQ0518', reporter: '张三', time: '2025年10月16日 15:29:07', fault: '待巡检' },
+                        { number: 'ZQ0352', reporter: '李四', time: '2025年10月16日 14:15:23', fault: '待巡检' },
+                        { number: 'ZQ0127', reporter: '王五', time: '2025年10月16日 10:08:45', fault: '待巡检' }
+                    ]
+                }
+            },
+            maintenance: {
+                county: [
+                    { name: '宁陵县', villages: 10, wells: 118 },
+                    { name: '梁园区', villages: 8, wells: 72 },
+                    { name: '睢阳区', villages: 13, wells: 165 }
+                ],
+                town: {
+                    '宁陵县': [
+                        { name: '张桥镇', villages: 3, wells: 38 },
+                        { name: '刘楼乡', villages: 2, wells: 28 },
+                        { name: '华堡镇', villages: 5, wells: 52 }
+                    ]
+                },
+                village: {
+                    '张桥镇': [
+                        { name: '张桥村', wells: 12 },
+                        { name: '李楼村', wells: 8 },
+                        { name: '王庄村', wells: 18 }
+                    ]
+                },
+                wells: {
+                    '张桥村': [
+                        { number: 'ZQ0518', reporter: '张三', time: '2025年10月16日 15:29:07', fault: '待维修' },
+                        { number: 'ZQ0352', reporter: '李四', time: '2025年10月16日 14:15:23', fault: '待维修' },
+                        { number: 'ZQ0127', reporter: '王五', time: '2025年10月16日 10:08:45', fault: '待维修' }
+                    ]
+                }
+            }
+        };
+
+        // 数据下钻主函数
+        function drillDown(type, level) {
+            currentDrillType = type;
+            drillDownState.level = level;
+            
+            showPage('drillDownPage');
+            updateHeader('数据下钻');
+            
+            // 更新面包屑
+            updateBreadcrumb();
+            
+            // 渲染县级数据
+            renderCountyLevel();
+        }
+
+        // 更新面包屑导航
+        function updateBreadcrumb() {
+            const typeNames = {
+                'repair': '上报统计',
+                'inspection': '巡检统计',
+                'maintenance': '维修统计'
+            };
+            
+            document.getElementById('currentLevel').textContent = typeNames[currentDrillType];
+        }
+
+        // 渲染县级数据
+        function renderCountyLevel() {
+            const content = document.getElementById('drillDownContent');
+            const data = mockData[currentDrillType].county;
+            
+            let html = '';
+            data.forEach((county, index) => {
+                html += `
+                    <div class="level-card" id="county-${index}">
+                        <div class="card-header-row" onclick="toggleCard('county-${index}')">
+                            <div class="card-title-section">
+                                <div class="card-title">🏛️ ${county.name}</div>
+                                <div class="card-subtitle">
+                                    <span>📍 已报修村（${county.villages}个）</span>
+                                    <span>🔧 报修机井（${county.wells}个）</span>
+                                </div>
+                            </div>
+                            <div class="card-toggle">▼</div>
+                        </div>
+                        <div class="card-content" id="content-county-${index}"></div>
+                    </div>
+                `;
+            });
+            
+            content.innerHTML = html;
+        }
+
+        // 切换卡片展开/收起
+        function toggleCard(cardId) {
+            const card = document.getElementById(cardId);
+            const wasExpanded = card.classList.contains('expanded');
+            
+            if (wasExpanded) {
+                card.classList.remove('expanded');
+            } else {
+                card.classList.add('expanded');
+                
+                // 如果是县级卡片，加载镇级数据
+                if (cardId.startsWith('county-')) {
+                    const index = cardId.split('-')[1];
+                    const countyName = mockData[currentDrillType].county[index].name;
+                    drillDownState.county = countyName;
+                    renderTownLevel(cardId, countyName);
+                }
+            }
+        }
+
+        // 渲染镇级数据
+        function renderTownLevel(parentCardId, countyName) {
+            const contentDiv = document.getElementById('content-' + parentCardId);
+            const data = mockData[currentDrillType].town[countyName];
+            
+            let html = '';
+            data.forEach((town, index) => {
+                const townId = `town-${countyName}-${index}`;
+                html += `
+                    <div class="level-card" id="${townId}" style="margin-left: 10px; border-left-color: #28a745;">
+                        <div class="card-header-row" onclick="toggleTownCard('${townId}', '${countyName}', '${town.name}')">
+                            <div class="card-title-section">
+                                <div class="card-title">🏘️ ${town.name}</div>
+                                <div class="card-subtitle">
+                                    <span>📍 已报修村（${town.villages}个）</span>
+                                    <span>🔧 报修机井（${town.wells}个）</span>
+                                </div>
+                            </div>
+                            <div class="card-toggle">▼</div>
+                        </div>
+                        <div class="card-content" id="content-${townId}"></div>
+                    </div>
+                `;
+            });
+            
+            contentDiv.innerHTML = html;
+        }
+
+        // 切换镇级卡片
+        function toggleTownCard(townId, countyName, townName) {
+            const card = document.getElementById(townId);
+            const wasExpanded = card.classList.contains('expanded');
+            
+            if (wasExpanded) {
+                card.classList.remove('expanded');
+            } else {
+                card.classList.add('expanded');
+                drillDownState.town = townName;
+                renderVillageLevel(townId, townName);
+            }
+        }
+
+        // 渲染村级数据
+        function renderVillageLevel(parentTownId, townName) {
+            const contentDiv = document.getElementById('content-' + parentTownId);
+            const data = mockData[currentDrillType].village[townName];
+            
+            let html = '';
+            data.forEach((village, index) => {
+                html += `
+                    <div class="well-card" onclick="showWellList('${village.name}')">
+                        <div class="well-card-title">🏡 ${village.name}</div>
+                        <div class="well-card-info">报修机井：${village.wells}个</div>
+                    </div>
+                `;
+            });
+            
+            contentDiv.innerHTML = html;
+        }
+
+        // 显示机井列表
+        function showWellList(villageName) {
+            drillDownState.village = villageName;
+            showPage('wellListPage');
+            updateHeader('机井列表');
+            
+            const content = document.getElementById('wellListContent');
+            const wells = mockData[currentDrillType].wells[villageName];
+            
+            let html = '';
+            wells.forEach((well, index) => {
+                html += `
+                    <div class="level-card" onclick="showWellDetail('${well.number}', '${villageName}')">
+                        <div class="card-title-section">
+                            <div class="card-title">${drillDownState.town} > ${villageName}</div>
+                            <div class="card-title" style="color: #4285f4; font-size: 16px; margin-top: 6px;">机井编号：${well.number}</div>
+                            <div style="margin-top: 10px;">
+                                <div style="font-size: 12px; color: #666; margin-bottom: 4px;">报修人：${well.reporter}</div>
+                                <div style="font-size: 12px; color: #4285f4; font-weight: 600; margin-bottom: 4px;">报修时间：${well.time}</div>
+                                <div style="font-size: 13px; color: #dc3545; font-weight: 600;">故障类型：${well.fault}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            content.innerHTML = html;
+        }
+
+        // 显示机井详情
+        function showWellDetail(wellNumber, villageName) {
+            showPage('wellDetailPage');
+            updateHeader('机井详情');
+            
+            // 更新详情页信息
+            document.getElementById('detailWellNumber').textContent = wellNumber;
+            document.getElementById('detailWellRegion').textContent = `${drillDownState.town} > ${villageName}`;
+            
+            // 根据类型更新标签
+            const typeLabels = {
+                'repair': '报修',
+                'inspection': '巡检',
+                'maintenance': '维修'
+            };
+            
+            // 可以根据需要动态更新其他详情信息
+        }
+
+        // 返回导航函数
+        function backToNewStats() {
+            showPage('newStatsPage');
+            updateHeader('新数据统计');
+            drillDownState = { level: '', county: '', town: '', village: '' };
+        }
+
+        function backToDrillDown() {
+            showPage('drillDownPage');
+            updateHeader('数据下钻');
+            renderCountyLevel();
+        }
+
+        function backToWellList() {
+            showPage('wellListPage');
+            updateHeader('机井列表');
         }
 
         function startVoiceRepair() {
